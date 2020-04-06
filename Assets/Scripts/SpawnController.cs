@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Assets.Scripts.Data;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Assets.Scripts
@@ -12,6 +13,8 @@ namespace Assets.Scripts
         public Transform PlayerContainer;
         public List<PressButton> PressButtons;
         public List<Vector2> SpawnPositions;
+        public List<Image> PlayerHealthImages;
+        
 
         public static int PlayerCount = 2;
 
@@ -30,6 +33,7 @@ namespace Assets.Scripts
                 player.PressButton = PressButtons[i];
                 player.transform.Rotate(0, 0, -45 + 180*i);
                 player.RotationSpeed *= Random.Range(0, 2) * 2 - 1;
+                player.GetComponent<PlayerView>().Initialize(i, PlayerHealthImages[i]);
             }
         }
 

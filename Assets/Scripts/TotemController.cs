@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Data;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -8,25 +7,27 @@ namespace Assets.Scripts
 
         private void OnTriggerExit2D(Collider2D objectCollider)
         {
-            var playerController = objectCollider.GetComponent<PlayerController>();
+            var player = objectCollider.GetComponent<PlayerView>();
+
             if (objectCollider.tag == "Player")
             {
-                playerController.HP--;
-                if (playerController.HP == 0)
+                player.Health--;
+
+                if (player.Health == 0)
+                {
                     Destroy(objectCollider.gameObject);
+                }
                 else
                 {
-                    SpawnPlayer(playerController);
+                    SpawnPlayer(player.transform);
                 }
             }
         }
 
-        void SpawnPlayer(PlayerController playerController)
-        { 
-            playerController.transform.localPosition = new Vector3(Random.Range(-50, 50), Random.Range(-50, 50));
-            playerController.Rigidbody.velocity = Vector2.zero;
-
-            Profile.Instance.Setting.MusicVolume = 0;
+        void SpawnPlayer(Transform player)
+        {
+            player.localPosition = new Vector3(Random.Range(-50, 50), Random.Range(-50, 50));
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 }

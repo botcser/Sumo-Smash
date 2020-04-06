@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Common.Tweens;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -10,8 +13,6 @@ namespace Assets.Scripts
         public float CollisionForce;
         public float Velocity;
         public PressButton PressButton;
-
-        public int HP = 3;
 
 
         public void Update()
@@ -41,6 +42,8 @@ namespace Assets.Scripts
             {
                 coll.transform.GetComponent<Rigidbody2D>().AddForce(vector * CollisionForce, ForceMode2D.Impulse);
             }
+
+            coll.transform.GetComponentInChildren<ScaleSpring>().enabled = true;
             Debug.Log(Vector2.Angle(transform.up, vector));
 
         }
