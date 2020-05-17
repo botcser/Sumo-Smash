@@ -24,6 +24,7 @@ namespace Assets.Scripts.Interface
             }
 
             OnOpen();
+            Events.OpenWindow(GetType().Name);
         }
 
         public void Close()

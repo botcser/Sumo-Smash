@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.Scripts.Data;
 using Assets.Scripts.Interface;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -88,6 +89,8 @@ namespace Assets.Scripts
             else
             {
                 StartReady.Open();
+                Analytics.CustomEvent("GameStarted",
+                    new Dictionary<string, object> {{"PlayersCount", PlayersCount}, {"CPUsCount", CPUsCount}});
             }
         }
 
