@@ -1549,7 +1549,6 @@ GameObject:
   - component: {fileID: 717146794}
   - component: {fileID: 717146793}
   - component: {fileID: 717146792}
-  - component: {fileID: 717146791}
   - component: {fileID: 717146790}
   m_Layer: 5
   m_Name: 3CPU
@@ -1593,18 +1592,6 @@ MonoBehaviour:
   PlayersCount: 1
   CPUsCount: 3
   Tutorial: 0
---- !u!114 &717146791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717146788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25171c381b87f0f4cad942ad0f830e07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &717146792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,7 +2006,6 @@ GameObject:
   - component: {fileID: 772530388}
   - component: {fileID: 772530387}
   - component: {fileID: 772530386}
-  - component: {fileID: 772530385}
   - component: {fileID: 772530384}
   m_Layer: 5
   m_Name: 2Players
@@ -2063,18 +2049,6 @@ MonoBehaviour:
   PlayersCount: 2
   CPUsCount: 2
   Tutorial: 0
---- !u!114 &772530385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772530382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25171c381b87f0f4cad942ad0f830e07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &772530386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4333,7 +4307,6 @@ GameObject:
   - component: {fileID: 1436686401}
   - component: {fileID: 1436686400}
   - component: {fileID: 1436686399}
-  - component: {fileID: 1436686398}
   m_Layer: 5
   m_Name: ChallengeBt
   m_TagString: Untagged
@@ -4361,18 +4334,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 300, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1436686398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436686396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25171c381b87f0f4cad942ad0f830e07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1436686399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4428,7 +4389,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1436686398}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -4488,7 +4449,6 @@ GameObject:
   - component: {fileID: 1448044013}
   - component: {fileID: 1448044012}
   - component: {fileID: 1448044011}
-  - component: {fileID: 1448044010}
   - component: {fileID: 1448044009}
   m_Layer: 5
   m_Name: 2CPU
@@ -4532,18 +4492,6 @@ MonoBehaviour:
   PlayersCount: 1
   CPUsCount: 2
   Tutorial: 0
---- !u!114 &1448044010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448044007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25171c381b87f0f4cad942ad0f830e07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1448044011
 MonoBehaviour:
   m_ObjectHideFlags: 0

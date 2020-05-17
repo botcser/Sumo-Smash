@@ -8,6 +8,7 @@ namespace Assets.Scripts.Data
     {
         public int Progress;
         public Settings Settings;
+        public long AdTimeTicks;
 
         public static Profile Instance;
 

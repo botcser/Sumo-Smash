@@ -1,10 +1,12 @@
-﻿using Assets.Scripts.Data;
+﻿using System;
+using Assets.Scripts.Data;
 using Assets.SimpleLocalization;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 namespace Assets.Scripts.Interface
 {
-    public class Main : BaseInterface
+    public class Main : BaseInterface, IUnityAdsListener
     {
         public static Main Instance;
         public BaseInterface MainMenu;
@@ -25,6 +27,42 @@ namespace Assets.Scripts.Interface
             {
                 MenuMusic.volume = 0f;
             }
+
+            if (!Advertisement.isInitialized)
+            {
+                #if UNITY_ANDROID || UNITY_EDITOR
+                Advertisement.Initialize("3609028");
+                #elif UNITY_IOS
+                Advertisement.Initialize("3609029");
+                #endif
+                Advertisement.AddListener(this);
+
+            }
+        }
+
+        public void OnUnityAdsReady(string placementId)
+        {
+            Debug.Log("OnUnityAdsReady");
+        }
+
+        public void OnUnityAdsDidError(string message)
+        {
+            Debug.Log("OnUnityAdsDidError");
+        }
+
+        public void OnUnityAdsDidStart(string placementId)
+        {
+            Debug.Log("OnUnityAdsDidStart");
+        }
+
+        public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+        {
+            if (showResult != ShowResult.Failed)
+            {
+                Profile.Instance.AdTimeTicks = DateTime.UtcNow.Ticks;
+            }
+
+            Debug.Log("OnUnityAdsDidStart");
         }
     }
 }
