@@ -1,0 +1,20 @@
+Key,English,German,Russian
+PrepareGame.Player,Player VS Player,Spieler VS Spieler,Игрок VS Игрок
+PrepareGame.CPU,Player VS CPU,Spieler VS CPU,Игрок VS CPU
+PrepareGame.Challenge,Challenge,Pr?fung,Испытание
+PrepareVsCPU.2PlayersVSCPU,2 Players VS CPU,2 Spieler VS CPU,2 Игрока VS CPU
+Players.Choice.2Players,2 Players,2 Spieler,2 Игрока
+Players.Choice.3Players,3 Players,3 Spieler,3 Игрока
+Players.Choice.4Players,4 Players,4 Spieler,4 Игрока
+Battle.Pause,Pause,Pause,Пауза
+Congrat.Winner,Winner Player {0},Sieger {0},Победитель {0}
+Tutorial.ThisButton,Click to this icon to make the player move forward,"Klicken Sie zu dieser Ikone, um den Spieler vorankommen zu lassen","Жми на иконку игрока, чтобы сусмоист двигался вперед"
+Tutorial.ThisLifes,"You have three lives, don't fall off from the totem","Sie haben drei Leben, gehen Sie vom Totem nicht zur?ck",У тебя есть 3 жизни - не упади с тотема!
+Tutorial.Goal,Stay on the totem and be cool!,Bleiben Sie das Totem l?nger und k?hl sein!,Оставайся на тотеме и будь крутым!
+Tutorial.BadText,"Too close, but not enough. Try again!","Zu nahe, aber nicht genug. Versuchen Sie noch einmal!","Почти, но не достаточно. Попробуй еще!"
+Tutorial.GoodText,Wow! You scored enough points to get new underpants!,"Wow! Sie haben genug Punkte eingekerbt, um neue Unterhose zu bekommen!",Ухты! Ты заработал достаточно очков на новыe труселя!
+Tutorial.LastScores,Last scores,Letzte Punkte,Прошлый результат
+Buttons.Exit,Exit,Ausgang,Выход
+Language.English,English,Englische,Английский
+Language.German,German,Deutche,Немецкий
+Language.Russian,Russian,Russe,Русский

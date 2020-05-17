@@ -9,13 +9,18 @@ namespace Assets.Scripts
     {
         public bool Pressed;
 
+        public Button.ButtonClickedEvent OnPointerDownEvent = new Button.ButtonClickedEvent();
+        public Button.ButtonClickedEvent OnPointerUpEvent = new Button.ButtonClickedEvent();
+            
         public void OnPointerDown(PointerEventData eventData)
         {
+            OnPointerDownEvent.Invoke();
             Pressed = true;
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            OnPointerUpEvent.Invoke();
             Pressed = false;
         }
     }

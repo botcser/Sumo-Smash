@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Interface;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class StartTimer : MonoBehaviour
 {
-    public GameObject TimerPanel;
+    public BaseInterface TimerPanel; 
 
     void Start()
     {
@@ -22,6 +23,6 @@ public class StartTimer : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        TimerPanel.SetActive(false);
+        TimerPanel.Close();
     }
 }

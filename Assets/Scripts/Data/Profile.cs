@@ -7,7 +7,7 @@ namespace Assets.Scripts.Data
     public class Profile
     {
         public int Progress;
-        public Settings Setting;
+        public Settings Settings;
 
         public static Profile Instance;
 
@@ -31,6 +31,18 @@ namespace Assets.Scripts.Data
             else
             {
                 Instance = new Profile();
+
+
+                switch (Application.systemLanguage)
+                {
+                    case SystemLanguage.German:
+                    case SystemLanguage.Russian:
+                        Instance.Settings.Language = Application.systemLanguage.ToString();
+                        break;
+                    default:
+                        Instance.Settings.Language = "English";
+                        break;
+                }
             }
         }
 

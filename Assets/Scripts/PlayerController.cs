@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts.Common.Tweens;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -13,39 +15,61 @@ namespace Assets.Scripts
         public float CollisionForce;
         public float Velocity;
         public PressButton PressButton;
+        public int PlayerID;
+        public bool OnTotem = true;
 
+        public AudioSource UffSound;
+        public AudioSource FallingSound;
+        public AudioSource EatingSound;
+
+
+        public void Start()
+        {
+            PressButton.OnPointerDownEvent.AddListener(() => { RotationSpeed *= -1; });
+        }
 
         public void Update()
         {
             if (PressButton.Pressed)
             {
-                RotationSpeed *= -1;
-            }
-
-            if (PressButton.Pressed)
-            {
                 Rigidbody.AddForce(transform.up * MovementSpeed * Time.deltaTime, ForceMode2D.Impulse);
             }
-            else if (Rigidbody.velocity.magnitude < 10)
+            else if (Rigidbody.velocity.magnitude < 0.2)
             {
                 transform.Rotate(0, 0, Time.deltaTime * RotationSpeed);
             }
 
-            Velocity = Rigidbody.velocity.magnitude;
+            Velocity = Rigidbody.velocity.magnitude;                                                                    // DEBUG
         }
 
         public void OnCollisionEnter2D(Collision2D coll)
         {
-            var vector = (coll.transform.position - transform.position).normalized;
-
-            if (Vector2.Angle(transform.up, vector) < 90)
+            if (coll.transform.tag == "Player")
             {
-                coll.transform.GetComponent<Rigidbody2D>().AddForce(vector * CollisionForce, ForceMode2D.Impulse);
+                //Debug.Log($"Collision {PlayerID} and {coll.transform.GetComponent<PlayerController>().PlayerID}");
+                var vector = (coll.transform.position - transform.position).normalized;
+
+                if (Vector2.Angle(transform.up, vector) < 90)
+                {
+                    this.GetComponent<PlayerController>().UffSound.Play();
+                    coll.transform.GetComponent<Rigidbody2D>().AddForce(vector * CollisionForce, ForceMode2D.Impulse);
+                }
+
+                coll.transform.GetComponentInChildren<ScaleSpring>().enabled = true;
+                //Debug.Log(Vector2.SignedAngle(transform.up, vector) + ":" + transform.GetComponent<PlayerController>().PlayerID);
             }
-
-            coll.transform.GetComponentInChildren<ScaleSpring>().enabled = true;
-            Debug.Log(Vector2.Angle(transform.up, vector));
-
+            else if (coll.transform.tag == "Food")
+            {
+                StartCoroutine(Eating(coll));
+            }
+        }
+        
+        IEnumerator Eating(Collision2D coll)
+        {
+            Destroy(coll.gameObject);
+            EatingSound.Play();
+            yield return new WaitForSeconds(1.5f);
+            PlayTutorial.FoodGotcha = true;
         }
     }
 }
