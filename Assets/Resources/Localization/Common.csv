@@ -13,9 +13,14 @@ Tutorial.ThisLifes,"You have three lives, don't fall off from the totem","Sie ha
 Tutorial.Goal,Stay on the totem and be cool!,Bleiben Sie das Totem l?nger und k?hl sein!,Оставайся на тотеме и будь крутым!
 Tutorial.BadText,"Too close, but not enough. Try again!","Zu nahe, aber nicht genug. Versuchen Sie noch einmal!","Почти, но не достаточно. Попробуй еще!"
 Tutorial.GoodText,Wow! You scored enough points to get new underpants!,"Wow! Sie haben genug Punkte eingekerbt, um neue Unterhose zu bekommen!",Ухты! Ты заработал достаточно очков на новыe труселя!
-Tutorial.LastScores,Last scores,Letzte Punkte,Прошлый результат
+Tutorial.LastScores,Last scores {0},Letzte Punkte {0},Прошлый результат {0}
 Buttons.Exit,Exit,Ausgang,Выход
 Language.English,English,Englische,Английский
 Language.German,German,Deutche,Немецкий
 Language.Russian,Russian,Russe,Русский
 Buttons.Vote,"If you like the game and want to continue, click this!",Wenn Ihnen das Spiel gefällt und Sie Entwicklung fortsetzen wollen - klicken Sie auf das!,Если вам понравилась игра и хотите продолжения разработки - жмите!
+Game.Description,,,"Сумо смэш (Sumo smash)! Вечеринка в стиле сумо (Sumo party) для нескольких игроков! Жми, бегай, толкай, выкидывай! Кто быстрее сообразит, кто точнее толкнет, кто лучше станцует - тот и станет королем тотема! 
+Очень простой геймплей - останься на тотеме, столкни других.
+Очень простое управление - жми на свою иконку игрока и сумоист (sumoman) побежит.
+Присутствие тактики, динамики боя, хитрых уловок...
+Будущие дополнения: больше уровней сложностей CPU, режимов игры, разные бонусы, больше пасхалочек (easter eggs), соревнования, механика RPG - всё это и много другое, если вам понравится (like) игра."

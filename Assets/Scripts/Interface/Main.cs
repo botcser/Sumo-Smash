@@ -36,6 +36,8 @@ namespace Assets.Scripts.Interface
             {
                 MenuMusic.volume = 0f;
             }
+//            PlayerPrefs.SetInt("scores", 0);
+//            PlayerPrefs.SetInt("NewPants", 0);
 #if UNITY_ADS
             if (!Advertisement.isInitialized)
             {

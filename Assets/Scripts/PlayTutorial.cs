@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Assets.Scripts.Data;
+using Assets.SimpleLocalization;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SocialPlatforms.Impl;
@@ -27,7 +28,7 @@ namespace Assets.Scripts
         public static Coroutine CoroutineSpawnFood;
         public static bool TutorialEnd;
 
-        private static int _masterScores = 140;
+        private static int _masterScores = 150;
 
         void Start()
         {
@@ -58,7 +59,7 @@ namespace Assets.Scripts
         {
             while (SliderTime.value > 0)
             {
-                if (FoodGotcha == true)
+                if (FoodGotcha == true)                                         // чтобы запустить спавн мы должны сьесть...
                 {
                     Scores.text = $"{scores}";
                     var food = Instantiate(FoodPrefab, Container);
@@ -80,21 +81,25 @@ namespace Assets.Scripts
                 Events.Event("Advertisement.Show()");
             }
 #endif
-            LastScores.text = $"Last scores {PlayerPrefs.GetInt("scores")}";
+            scores -= 5;                                                      // ... поэтому минусуем стартовое.
+            LastScores.text = LocalizationManager.Localize("Tutorial.LastScores", PlayerPrefs.GetInt("scores"));
 
             if (PlayerPrefs.GetInt("scores") < scores)
             {
                 if (scores > _masterScores)
                 {
-                    PlayerPrefs.SetInt("NewPants", 1);
-                    GoodText.SetActive(true);
-                    _masterScores *= 2;
+                    if (PlayerPrefs.GetInt("NewPants") == 0)
+                    {
+                        GoodText.SetActive(true);
+                        PlayerPrefs.SetInt("NewPants", 1);
+                    }
+                    PlayerPrefs.SetInt("scores", scores);
                 }
-                PlayerPrefs.SetInt("scores", scores);
-            }
-            else
-            {
-                BadText.SetActive(true);
+                else
+                {
+                    BadText.SetActive(true);
+                    PlayerPrefs.SetInt("scores", scores);
+                }
             }
         }
     }
