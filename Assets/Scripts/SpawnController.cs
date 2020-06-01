@@ -33,7 +33,7 @@ namespace Assets.Scripts
         {
             CPUs = new List<CPUController>(CPUsCount);
 
-
+            Debug.Log($"{PlayerPrefs.GetInt("PlayersVoice")}");
             int j;
             for (j = 0; j < PlayersCount; j++)
             {
@@ -43,9 +43,24 @@ namespace Assets.Scripts
                 PressButtons[j].gameObject.SetActive(true);
                 player.transform.Rotate(0, 0, -45 + 180 * j);
                 player.RotationSpeed *= Random.Range(0, 2) * 2 - 1;
-                player.GetComponent<PlayerView>().Initialize(j, PlayerHealthImages[j]);
+                player.GetComponent<PlayerView>().Initialize(j, PlayerHealthImages[j], PressButtons[j].gameObject);
                 player.PlayerID = (int)Mathf.Pow(2, j);
                 Players.Add(player);
+
+                if (PlayerPrefs.GetInt("PlayersVoice") == 1)       // выключено
+                {
+                    player.UffSound.volume = 0f;
+                    player.EatingSound.volume = 0f;
+                    player.FallingSound.volume = 0f;
+                    player.DrippleSound.volume = 0f;
+                }
+                else
+                {
+                    player.UffSound.volume = 0.7f;
+                    player.EatingSound.volume = 1.0f;
+                    player.FallingSound.volume = 0.4f;
+                    player.DrippleSound.volume = 1.0f;
+                }
             }
             for (int i = 0; i < CPUsCount; i++)
             {
@@ -54,10 +69,23 @@ namespace Assets.Scripts
                 cpu.PressButton = PressButtons[i + j];
                 cpu.transform.Rotate(0, 0, -45 + 180 * i);
                 cpu.RotationSpeed *= Random.Range(0, 2) * 2 - 1;
-                cpu.GetComponent<PlayerView>().Initialize(i + j, PlayerHealthImages[i + j]);
+                cpu.GetComponent<PlayerView>().Initialize(i + j, PlayerHealthImages[i + j], PressButtons[i + j].gameObject);
                 cpu.PlayerID = (int)Mathf.Pow(2, i + j);
                 cpu.Players.AddRange(Players);
                 CPUs.Add(cpu);
+
+                if (PlayerPrefs.GetInt("PlayersVoice") == 1f)       // выключено
+                {
+                    cpu.UffSound.volume = 0f;
+                    cpu.FallingSound.volume = 0f;
+                    cpu.DrippleSound.volume = 1.0f;
+                }
+                else
+                {
+                    cpu.UffSound.volume = 0.7f;
+                    cpu.FallingSound.volume = 0.4f;
+                    cpu.DrippleSound.volume = 1.0f;
+                }
             }
 
             if (CPUsCount > 0)

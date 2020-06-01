@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Data;
+using Assets.SimpleLocalization;
 using UnityEngine;
 #if UNITY_ADS
 using UnityEngine.Advertisements;
@@ -22,14 +23,13 @@ namespace Assets.Scripts.Interface
         protected override void OnOpen()
         {
 #if UNITY_ADS
-            if (Advertisement.IsReady() && (DateTime.UtcNow - new DateTime(Profile.Instance.AdTimeTicks)).TotalMinutes > 10)
+            if (Advertisement.IsReady() && (DateTime.UtcNow - new DateTime(Profile.Instance.AdTimeTicks)).TotalMinutes > 5)
             {
                 Advertisement.Show();
                 Events.Event("Advertisement.Show()");
             }
 #endif
-
-            CongratText.text = "Player " + PlayerPrefs.GetInt("Winner") + " win!!!";
+            CongratText.text = LocalizationManager.Localize("Congrat.Winner", PlayerPrefs.GetInt("Winner"));
         }
     }
 }

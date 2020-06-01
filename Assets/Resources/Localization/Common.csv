@@ -7,7 +7,7 @@ Players.Choice.2Players,2 Players,2 Spieler,2 Игрока
 Players.Choice.3Players,3 Players,3 Spieler,3 Игрока
 Players.Choice.4Players,4 Players,4 Spieler,4 Игрока
 Battle.Pause,Pause,Pause,Пауза
-Congrat.Winner,Winner Player {0},Sieger {0},Победитель {0}
+Congrat.Winner,Player {0} wins,Sieger {0} Spieler,Победитель {0} Игрок
 Tutorial.ThisButton,Click to this icon to make the player move forward,"Klicken Sie zu dieser Ikone, um den Spieler vorankommen zu lassen","Жми на иконку игрока, чтобы сусмоист двигался вперед"
 Tutorial.ThisLifes,"You have three lives, don't fall off from the totem","Sie haben drei Leben, gehen Sie vom Totem nicht zur?ck",У тебя есть 3 жизни - не упади с тотема!
 Tutorial.Goal,Stay on the totem and be cool!,Bleiben Sie das Totem l?nger und k?hl sein!,Оставайся на тотеме и будь крутым!
@@ -18,3 +18,4 @@ Buttons.Exit,Exit,Ausgang,Выход
 Language.English,English,Englische,Английский
 Language.German,German,Deutche,Немецкий
 Language.Russian,Russian,Russe,Русский
+Buttons.Vote,"If you like the game and want to continue, click this!",Wenn Ihnen das Spiel gefällt und Sie Entwicklung fortsetzen wollen - klicken Sie auf das!,Если вам понравилась игра и хотите продолжения разработки - жмите!

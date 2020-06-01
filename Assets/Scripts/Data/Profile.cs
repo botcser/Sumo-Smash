@@ -7,7 +7,7 @@ namespace Assets.Scripts.Data
     public class Profile
     {
         public int Progress;
-        public Settings Settings;
+        public Settings Settings = new Settings();
         public long AdTimeTicks;
 
         public static Profile Instance;
@@ -32,7 +32,6 @@ namespace Assets.Scripts.Data
             else
             {
                 Instance = new Profile();
-
 
                 switch (Application.systemLanguage)
                 {

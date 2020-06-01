@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Assets.Scripts.Common.Tweens;
 using Assets.Scripts.Interface;
 using UnityEngine;
@@ -32,6 +33,8 @@ namespace Assets.Scripts
 
                 if (player.Health == 0)
                 {
+                    player.Ripples.Play();
+                    player.GetComponent<PlayerController>().DrippleSound.Play();
                     _winner = _winner - player.GetComponent<PlayerController>().PlayerID;
                     PlayerFall(player).OnComplete = () =>
                     {
@@ -54,7 +57,7 @@ namespace Assets.Scripts
                 }
                 else
                 {
-                    PlayerFall(player).OnComplete = () => { SpawnPlayer(player); };
+                    PlayerFall(player).OnComplete = () => { StartCoroutine(StartRipplesAndSpawn(player)); };
                 }
             }
         }
@@ -72,6 +75,7 @@ namespace Assets.Scripts
 
         Tween PlayerFall(PlayerView player)
         {
+            player.GetComponent<PlayerController>().MovementSpeed = 1;
             player.GetComponent<PlayerController>().FallingSound.Play();
             player.GetComponent<Collider2D>().isTrigger = true;
 
@@ -79,7 +83,7 @@ namespace Assets.Scripts
             {
                 player.PlayerImage.color = new Color(1, 1, 1, progress);
                 player.transform.localScale = Vector3.one * progress;
-            }, 11, 1, 0, 1.5f);
+            }, 11, 1, 0, 1f);
 
             player.DustTrail.Stop();
             commonTween.AnimationCurve = player.AnimationCurve;
@@ -89,6 +93,7 @@ namespace Assets.Scripts
 
         public void SpawnPlayer (PlayerView player)
         {
+            player.GetComponent<PlayerController>().MovementSpeed = player.GetComponent<PlayerController>().BuffedMovementSpeed;
             player.GetComponent<Collider2D>().isTrigger = false;
             player.transform.localPosition = new Vector3(Random.Range(-50, 50), Random.Range(-50, 50));
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -96,7 +101,6 @@ namespace Assets.Scripts
             player.transform.localScale = Vector3.one;
             player.DustTrail.Play();
             player.GetComponent<PlayerController>().OnTotem = true;
-            Debug.Log($"Spawn on totem {player.GetComponent<PlayerController>().OnTotem}  {player.GetComponent<PlayerController>().PlayerID}");
         }
 
         void GameEnd()
@@ -118,6 +122,15 @@ namespace Assets.Scripts
                     break;
             }
             CongratWindow.Open();
+        }
+
+
+        IEnumerator StartRipplesAndSpawn(PlayerView player)
+        {
+            player.GetComponent<PlayerController>().DrippleSound.Play();
+            player.Ripples.Play();
+            yield return new WaitForSeconds(3);
+            SpawnPlayer(player);
         }
     }
 }

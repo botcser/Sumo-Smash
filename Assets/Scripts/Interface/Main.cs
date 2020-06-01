@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts.Data;
 using Assets.SimpleLocalization;
 using UnityEngine;
@@ -39,9 +41,9 @@ namespace Assets.Scripts.Interface
             {
 
 #if UNITY_ANDROID || UNITY_EDITOR
-                Advertisement.Initialize("3609028");
-#elif UNITY_IOS
                 Advertisement.Initialize("3609029");
+#elif UNITY_IOS
+                Advertisement.Initialize("3609028");
 #endif
                 Advertisement.AddListener(this);
             }
@@ -56,7 +58,7 @@ namespace Assets.Scripts.Interface
 
         public void OnUnityAdsDidError(string message)
         {
-            Debug.Log("OnUnityAdsDidError");
+            Debug.Log("OnUnityAdsDidError " + message);
             Events.Event("OnUnityAdsDidError", "message", message);
         }
 

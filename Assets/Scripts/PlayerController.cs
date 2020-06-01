@@ -21,11 +21,15 @@ namespace Assets.Scripts
         public AudioSource UffSound;
         public AudioSource FallingSound;
         public AudioSource EatingSound;
+        public AudioSource DrippleSound;
+
+        public float BuffedMovementSpeed;
 
 
         public void Start()
         {
             PressButton.OnPointerDownEvent.AddListener(() => { RotationSpeed *= -1; });
+            BuffedMovementSpeed = MovementSpeed;
         }
 
         public void Update()

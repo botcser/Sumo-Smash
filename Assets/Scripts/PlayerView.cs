@@ -12,15 +12,25 @@ namespace Assets.Scripts
         public GameObject HealthImage;
         public List<Sprite> PlayerSprites;
         public ParticleSystem DustTrail;
+        public ParticleSystem Ripples;
         public AnimationCurve AnimationCurve;
+        public Sprite BlackPlayerButtonImage;
 
         private int _health;
 
-        public void Initialize(int i, GameObject playerHealthImages)
+        public void Initialize(int i, GameObject playerHealthImages, GameObject playerButton)
         {
             HealthImage = playerHealthImages;
             Health = 3;
-            PlayerImage.sprite = PlayerSprites[i];
+            if (PlayerPrefs.GetInt("NewPants") == 1 && i == 0)
+            {
+                PlayerImage.sprite = PlayerSprites.Last();
+                playerButton.GetComponent<Image>().sprite = BlackPlayerButtonImage;
+            }
+            else
+            {
+                PlayerImage.sprite = PlayerSprites[i];
+            }
         }
 
         public int Health

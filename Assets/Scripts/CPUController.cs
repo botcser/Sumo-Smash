@@ -31,6 +31,7 @@ namespace Assets.Scripts
 
         public IEnumerator Start()
         {
+            BuffedMovementSpeed = MovementSpeed;
             yield return new WaitForSeconds(4);
             yield return FindTargetAndAttack(Players);                           // в Z передается команда сменить вращение, поэтому Vector3
         }

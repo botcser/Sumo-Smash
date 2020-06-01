@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using Assets.Scripts.Data;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -25,13 +27,15 @@ namespace Assets.Scripts
         public static Coroutine CoroutineSpawnFood;
         public static bool TutorialEnd;
 
+        private static int _masterScores = 140;
+
         void Start()
         {
             TutorialEnd = false;
             FoodGotcha = true;
             scores = 0;
             CoroutineTimer =  StartCoroutine(Timer());
-            CoroutineSpawnFood = StartCoroutine(SpawnFood(FoodIcon));
+            CoroutineSpawnFood = StartCoroutine(SpawnFoodLoop(FoodIcon));
         }
 
         public IEnumerator Timer()
@@ -50,7 +54,7 @@ namespace Assets.Scripts
             EndPanel.SetActive(true);
         }
 
-        public IEnumerator SpawnFood(Sprite icon)
+        public IEnumerator SpawnFoodLoop(Sprite icon)
         {
             while (SliderTime.value > 0)
             {
@@ -69,11 +73,23 @@ namespace Assets.Scripts
                 yield return new WaitForSeconds(1f);
             }
 
+#if UNITY_ADS
+            if (Advertisement.IsReady() && (DateTime.UtcNow - new DateTime(Profile.Instance.AdTimeTicks)).TotalMinutes > 5)
+            {
+                Advertisement.Show();
+                Events.Event("Advertisement.Show()");
+            }
+#endif
             LastScores.text = $"Last scores {PlayerPrefs.GetInt("scores")}";
 
             if (PlayerPrefs.GetInt("scores") < scores)
             {
-                GoodText.SetActive(true);
+                if (scores > _masterScores)
+                {
+                    PlayerPrefs.SetInt("NewPants", 1);
+                    GoodText.SetActive(true);
+                    _masterScores *= 2;
+                }
                 PlayerPrefs.SetInt("scores", scores);
             }
             else
