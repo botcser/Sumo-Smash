@@ -22,14 +22,15 @@ namespace Assets.Scripts.Interface
 
         protected override void OnOpen()
         {
+            CongratText.text = LocalizationManager.Localize("Congrat.Winner", PlayerPrefs.GetInt("Winner"));
+
 #if UNITY_ADS
-            if (Advertisement.IsReady() && (DateTime.UtcNow - new DateTime(Profile.Instance.AdTimeTicks)).TotalMinutes > 5)
+            if (Advertisement.IsReady() && (DateTime.UtcNow - new DateTime(Profile.Instance.AdTimeTicks)).TotalMinutes > 9)
             {
                 Advertisement.Show();
                 Events.Event("Advertisement.Show()");
             }
 #endif
-            CongratText.text = LocalizationManager.Localize("Congrat.Winner", PlayerPrefs.GetInt("Winner"));
         }
     }
 }

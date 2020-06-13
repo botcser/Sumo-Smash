@@ -251,6 +251,7 @@ MonoBehaviour:
   FallingSound: {fileID: 4640971457807368453}
   EatingSound: {fileID: 7667321108077059956}
   DrippleSound: {fileID: 4435973434571481097}
+  Smoke: {fileID: 19800000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
   BuffedMovementSpeed: 0
 --- !u!50 &3098158049881574138
 Rigidbody2D:

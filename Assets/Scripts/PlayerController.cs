@@ -23,6 +23,8 @@ namespace Assets.Scripts
         public AudioSource EatingSound;
         public AudioSource DrippleSound;
 
+        public ParticleSystem Smoke;
+
         public float BuffedMovementSpeed;
 
 
@@ -70,8 +72,10 @@ namespace Assets.Scripts
         
         IEnumerator Eating(Collision2D coll)
         {
-            Destroy(coll.gameObject);
+            coll.gameObject.SetActive(false);
             EatingSound.Play();
+            Instantiate(Smoke, coll.transform.position - 10 * Vector3.forward, transform.rotation);
+            Destroy(coll.gameObject);
             yield return new WaitForSeconds(1.5f);
             PlayTutorial.FoodGotcha = true;
         }

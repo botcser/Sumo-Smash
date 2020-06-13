@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Data;
 using Assets.SimpleLocalization;
+using UnityEditor;
 using UnityEngine;
 #if UNITY_ADS
 using UnityEngine.Advertisements;
@@ -20,6 +21,8 @@ namespace Assets.Scripts.Interface
         public BaseInterface MainMenu;
         public AudioSource MenuMusic;
         public static bool DEBUG;
+        public ParticleSystem SmokePrefab;
+        public Transform WindowContainer;
 
         public void Awake()
         {
@@ -29,6 +32,14 @@ namespace Assets.Scripts.Interface
             LocalizationManager.Language = Profile.Instance.Settings.Language;
         }
 
+        public void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Instantiate(SmokePrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward, transform.rotation);
+            }
+        }
+        
         public void Start()
         {
             MainMenu.Open();
@@ -55,18 +66,18 @@ namespace Assets.Scripts.Interface
 #if UNITY_ADS
         public void OnUnityAdsReady(string placementId)
         {
-            Debug.Log("OnUnityAdsReady");
+//            Debug.Log("OnUnityAdsReady");
         }
 
         public void OnUnityAdsDidError(string message)
         {
-            Debug.Log("OnUnityAdsDidError " + message);
+//            Debug.Log("OnUnityAdsDidError " + message);
             Events.Event("OnUnityAdsDidError", "message", message);
         }
 
         public void OnUnityAdsDidStart(string placementId)
         {
-            Debug.Log("OnUnityAdsDidStart");
+//            Debug.Log("OnUnityAdsDidStart");
         }
 
         public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
@@ -77,7 +88,7 @@ namespace Assets.Scripts.Interface
             }
 
             Events.Event("OnUnityAdsDidFinish", "placementId", placementId, "showResult", showResult);
-            Debug.Log("OnUnityAdsDidStart");
+ //           Debug.Log("OnUnityAdsDidStart");
         }
 #endif
     }

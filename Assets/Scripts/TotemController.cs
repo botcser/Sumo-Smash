@@ -29,7 +29,7 @@ namespace Assets.Scripts
             {
                 player.Health--;
                 player.GetComponent<PlayerController>().OnTotem = false;
-                Debug.Log($"On totem {player.GetComponent<PlayerController>().OnTotem} {player.GetComponent<PlayerController>().PlayerID}");
+ //               Debug.Log($"On totem {player.GetComponent<PlayerController>().OnTotem} {player.GetComponent<PlayerController>().PlayerID}");
 
                 if (player.Health == 0)
                 {

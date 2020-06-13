@@ -75,7 +75,7 @@ namespace Assets.Scripts
             }
 
 #if UNITY_ADS
-            if (Advertisement.IsReady() && (DateTime.UtcNow - new DateTime(Profile.Instance.AdTimeTicks)).TotalMinutes > 5)
+            if (Advertisement.IsReady() && (DateTime.UtcNow - new DateTime(Profile.Instance.AdTimeTicks)).TotalMinutes > 9)
             {
                 Advertisement.Show();
                 Events.Event("Advertisement.Show()");

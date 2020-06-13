@@ -69,7 +69,6 @@ namespace Assets.Scripts
                     {
                         var distance = Vector2.Distance(i.transform.position, transform.position);
                         var angle = Vector2.Angle(transform.up, i.transform.position - transform.position);
-//                    Debug.Log($"{PlayerID} dist = {distance}, angle = {angle}, to player = {i.PlayerID}");
                         return distance + angle * AngleEffitience;
                     }).FirstOrDefault();
 
