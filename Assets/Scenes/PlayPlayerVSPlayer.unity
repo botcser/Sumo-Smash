@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 234880290}
   - component: {fileID: 234880293}
   - component: {fileID: 234880292}
+  - component: {fileID: 234880294}
   m_Layer: 0
   m_Name: MainPlay
   m_TagString: Untagged
@@ -777,6 +778,21 @@ MonoBehaviour:
   ColorNormal: {r: 1, g: 0.99296916, b: 0, a: 0.9843137}
   ColorWarning: {r: 1, g: 0.5691917, b: 0, a: 1}
   ColorCritical: {r: 1, g: 0.026644098, b: 0, a: 0.99215686}
+--- !u!114 &234880294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234880289}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111953fe19a6d1b46a1143bed433d1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonSize: {x: 200, y: 111}
+  Enabled: 1
+  StackTrace: 0
 --- !u!1 &240452100
 GameObject:
   m_ObjectHideFlags: 0
@@ -7517,8 +7533,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.399994, y: 0.6000366}
-  m_SizeDelta: {x: -149.9, y: -645.4}
+  m_AnchoredPosition: {x: 3.4, y: 0.60009766}
+  m_SizeDelta: {x: -62.3, y: -645.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1950607024
 MonoBehaviour:

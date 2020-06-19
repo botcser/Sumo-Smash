@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Interface
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Interface
 {
     public class PrepareGame : BaseInterface
     {

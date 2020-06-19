@@ -13,7 +13,7 @@ Tutorial.ThisLifes,"You have three lives, don't fall off from the totem","Sie ha
 Tutorial.Goal,Stay on the totem and be cool!,Bleiben Sie das Totem l?nger und k?hl sein!,Оставайся на тотеме и будь крутым!
 Tutorial.BadText,"Too close, but not enough. Try again!","Zu nahe, aber nicht genug. Versuchen Sie noch einmal!","Почти, но не достаточно. Попробуй еще!"
 Tutorial.GoodText,Wow! You scored enough points to get new underpants!,"Wow! Sie haben genug Punkte eingekerbt, um neue Unterhose zu bekommen!",Ухты! Ты заработал достаточно очков на новыe труселя!
-Tutorial.LastScores,Last scores {0},Letzte Punkte {0},Прошлый результат {0}
+Tutorial.LastScores,Last high scores {0},Letzte beste Punkte {0},Прошлый лучший результат {0}
 Buttons.Exit,Exit,Ausgang,Выход
 Language.English,English,Englische,Английский
 Language.German,German,Deutche,Немецкий
@@ -24,3 +24,6 @@ Game.Description,,,"Сумо смэш (Sumo smash)! Вечеринка в сти
 Очень простое управление - жми на свою иконку игрока и сумоист (sumoman) побежит.
 Присутствие тактики, динамики боя, хитрых уловок...
 Будущие дополнения: больше уровней сложностей CPU, режимов игры, разные бонусы, больше пасхалочек (easter eggs), соревнования, механика RPG - всё это и много другое, если вам понравится (like) игра."
+Help.HelpAsk,Do you wont to play the tutorial?,Wollen sie die Ausbildung zu spielen?,Хотите пройти обучение?
+Settings.Voice,Voice,Rede,Речь
+Settings.Music,Music,Musik,Музыка

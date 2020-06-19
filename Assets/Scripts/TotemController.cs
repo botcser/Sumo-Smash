@@ -83,7 +83,7 @@ namespace Assets.Scripts
             {
                 player.PlayerImage.color = new Color(1, 1, 1, progress);
                 player.transform.localScale = Vector3.one * progress;
-            }, 11, 1, 0, 1f);
+            }, 11, 1, 0, 0.7f);
 
             player.DustTrail.Stop();
             commonTween.AnimationCurve = player.AnimationCurve;

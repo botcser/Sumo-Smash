@@ -4,13 +4,21 @@ using System.Linq;
 using Assets.Scripts.Data;
 using Assets.Scripts.Interface;
 using UnityEngine;
+#if UNITY_ADS
+using UnityEngine.Advertisements;
+#endif
 using UnityEngine.Analytics;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Assets.Scripts
 {
+#if UNITY_ADS
+    public class SpawnController : MonoBehaviour, IUnityAdsListener
+#else
     public class SpawnController : MonoBehaviour
+#endif
+
     {
         public PlayerController PlayerPrefab;
         public CPUController CPUPrefab;
@@ -23,6 +31,7 @@ namespace Assets.Scripts
         public AudioSource MenuMusic;
         public BaseInterface TutorialPanel;
 
+        public static SpawnController Instance;
         public static int PlayersCount = 1;
         public static int CPUsCount = 3;
         public static List<CPUController> CPUs;
@@ -33,7 +42,7 @@ namespace Assets.Scripts
         {
             CPUs = new List<CPUController>(CPUsCount);
 
-            Debug.Log($"{PlayerPrefs.GetInt("PlayersVoice")}");
+            Instance = this;
             int j;
             for (j = 0; j < PlayersCount; j++)
             {
@@ -78,7 +87,7 @@ namespace Assets.Scripts
                 {
                     cpu.UffSound.volume = 0f;
                     cpu.FallingSound.volume = 0f;
-                    cpu.DrippleSound.volume = 1.0f;
+                    cpu.DrippleSound.volume = 0f;
                 }
                 else
                 {
@@ -105,6 +114,19 @@ namespace Assets.Scripts
 
         public void Start()
         {
+            Debug.Log("OnUnityAdsDidStart2: " + "Profile.Instance.AdTimeTicks = " + new DateTime(Profile.Instance.AdTimeTicks));
+#if UNITY_ADS
+            if (!Advertisement.isInitialized)
+            {
+
+#if UNITY_ANDROID || UNITY_EDITOR
+                Advertisement.Initialize("3609029");
+#elif UNITY_IOS
+                Advertisement.Initialize("3609028");
+#endif
+                Advertisement.AddListener(this);
+            }
+#endif
             if (PlayerPrefs.GetFloat("MusicVolume") == 0f)
             {
                 MenuMusic.volume = 0f;
@@ -112,6 +134,7 @@ namespace Assets.Scripts
 
             if (Tutorial)
             {
+                PlayerPrefs.SetInt("HelpDenied", 1);
                 TutorialPanel.Open();
             }
             else
@@ -129,5 +152,35 @@ namespace Assets.Scripts
                 Profile.Instance.Save();
             }
         }
+
+#if UNITY_ADS
+        public void OnUnityAdsReady(string placementId)
+        {
+            //            Debug.Log("OnUnityAdsReady");
+        }
+
+        public void OnUnityAdsDidError(string message)
+        {
+            //            Debug.Log("OnUnityAdsDidError " + message);
+            Events.Event("OnUnityAdsDidError", "message", message);
+        }
+
+        public void OnUnityAdsDidStart(string placementId)
+        {
+            //            Debug.Log("OnUnityAdsDidStart");
+        }
+
+        public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+        {
+            if (showResult != ShowResult.Failed)
+            {
+                Profile.Instance.AdTimeTicks = DateTime.UtcNow.Ticks;
+            }
+            Profile.Instance.Save();
+
+            Events.Event("OnUnityAdsDidFinish", "placementId", placementId, "showResult", showResult);
+            //           Debug.Log("OnUnityAdsDidStart");
+        }
+#endif
     }
 }
